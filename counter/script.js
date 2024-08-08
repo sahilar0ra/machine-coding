@@ -5,16 +5,32 @@ const resetBtn = document.getElementById('reset')
 const changeByInput = document.getElementById('changeBy')
 const container = document.getElementById('container')
 
-incrementBtn.addEventListener('click', ()=> {
-    let newValue = Number(counterValue.textContent) + Number(changeByInput.value);
-    counterValue.textContent =newValue;
+container.addEventListener("click", (e)=> {
+    // console.log(e.target.getAttribute('id'));
+    let elem = e.target.getAttribute('id');
+    if (elem === 'increment') {
+        let newValue = Number(counterValue.textContent) + Number(changeByInput.value);
+        counterValue.textContent =newValue;
+    }
+    if (elem === 'decrement') {
+        let newValue = Number(counterValue.textContent) - Number(changeByInput.value);
+        newValue < 0 ? 0: counterValue.textContent = newValue;
+    }
+    if (elem === 'reset') {
+        counterValue.textContent = 0;
+    }
 })
 
-decrementBtn.addEventListener('click', ()=> {
-    let newValue = Number(counterValue.textContent) - Number(changeByInput.value);
-    newValue < 0 ? 0: counterValue.textContent = newValue;
-})
+// incrementBtn.addEventListener('click', ()=> {
+//     let newValue = Number(counterValue.textContent) + Number(changeByInput.value);
+//     counterValue.textContent =newValue;
+// })
 
-resetBtn.addEventListener('click', ()=> {
-    counterValue.textContent = 0;
-})
+// decrementBtn.addEventListener('click', ()=> {
+//     let newValue = Number(counterValue.textContent) - Number(changeByInput.value);
+//     newValue < 0 ? 0: counterValue.textContent = newValue;
+// })
+
+// resetBtn.addEventListener('click', ()=> {
+//     counterValue.textContent = 0;
+// })
